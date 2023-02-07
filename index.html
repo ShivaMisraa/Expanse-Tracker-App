@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manuplition</title>
+</head>
+<body>
+    <div id="delete">First Div</div>
+     <ul id="element">
+        <li class="list-item">First Element</li>
+        <li class="list-item">Second  Element</li>
+        <li class="list-item">Third Element</li>
+     </ul>
+     <table>
+        <tr>
+            <td>One</td>
+            <td>Two</td>
+        </tr>
+        <tr>
+            <td>Three</td>
+            <td>Fourth</td>
+        </tr>
+     </table>
+     <button onclick="alert('Namaste World')" id="clickMe">clickMe</button>
+     <script>
+       // root node 
+       //Sibling 
+
+    //  const ulTag=document.body.children[0]
+    //  console.log(ulTag.nextElementSibling)
+
+    //table
+    // const tableTag= document.body.children[1]
+    // tableTag.tBodies[0].rows[0].cells[0].style='background-color:red;'
+    // Id Search
+    // console.log()
+    // element.style.background='red'
+    // const ulTag= document.getElementById("element")
+    // ulTag.style.backgroundColor="red"
+
+    // listItem= document.getElementsByClassName("list-item")
+    // console.log(listItem)
+    // const listItems = document.querySelectorAll('ul>li:nth-child()')
+    // console.log(listItems[0].textContent)
+
+    //creating , removing and elements
+    // const newDiv= document.createElement('div')
+    // const newText= document.createTextNode('Namaste World')
+    // newDiv.appendChild(newDiv)
+    // body.after(newDiv)
+    // delete.remove()
+
+    //events
+    // // function callMe(){
+    // //     alert('Thanks for clicking')
+    // //  }
+    //  clickMe.onclick=callMe
+    function callMe(){
+        alert("thanks")
+    }
+    // clickMe.onclick= callMe
+
+    clickMe.addEventListner('click', clickMe )
+      </script>
+</body>
+</html>

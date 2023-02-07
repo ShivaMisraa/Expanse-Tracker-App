@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title>Expanse Tracker</title>
+</head>
+<body style="background-color: rgb(123, 231, 121);"  >
+    <div class="container input-group">
+        <div class="form-floating mb-3  col-md-3 " style="width: auto; margin-top: 30px;">
+            <span >Choose Expanse Ammount</span>
+            <input type="number" class="form-control "   id="floatingInput" placeholder="name@example.">
+           
+          </div>
+          <div class="form-floating md-3 col-md-3" style="width: auto; margin-top: 30px; ">
+            <span>Choose Description</span>
+            <input type="text" class="form-control" id="floatingPassword" placeholder="Password" >
+            
+          </div>
+          <div class="form-floating md-3 col-md-3" style="width: auto; margin-top: 30px;" >
+            <span>Choose Category</span>
+            <select class="form-select" name="" id="" >
+            <option selected>Choose...</option>
+            <option value="1">Movies</option>
+            <option value="2">Club</option>
+            <option value="3">Going Out</option>
+        </select>
+    </div>
+        <div class="form-floating md-3 col-md-2" style="width: auto; margin-top: 52px;">
+          <button class="btn btn-outline-secondary col-md-5 col-md-2" type="button" id="add_btn"  style="background-color: black;">Add Expanse</button>
+
+        </div>
+    </div>
+    <div>
+    <!-- <div class="form-floating md-3 col-md-3" style="width: 50%; margin-top: 30px; "> -->
+        <ul class="container list-group  " style="width: 70%;" id="parentList">
+        <li class="list-group-item d-flex justify-content
+        -between" aria-current="true">
+            <h3 class="flex-grow-1">List</h3>
+            <button class="btn btn-warning mx-3" onclick="removeExapnse(this)">Remove Expance</button>
+            <button class="btn btn-danger mx-3" onclick="editExapnse(this)">Edit Expance</button>
+            
+
+        
+        </li>
+    </ul>
+    </div>
+</body>
+
+<script>
+    let addBtn= document.getElementById('add_btn') 
+    addBtn.removeEventListener('click',addExpanse)
+    let parentList=document.getElementById('parentList')
+    function addExpanse(e){
+        if(parentList.children[0].className=="emptyMsg"){
+            parentList.children[0].remove()
+
+        }
+    let currentBtn= e.currentTarget;
+    let currentInput= currentBtn.previousElementSibling
+    let= currentExpanseName= currentInput.value
+    console.log(currentInput.value)
+
+    let newLi= document.createElement('li')
+    newLi.className='list-group-item d-flex justify-content-between'
+    newLi.innerHTML=` <h3 class="flex-grow-1">${currentExpanseName}</h3>
+            <button class="btn btn-warning mx-3" onclick="removeExapnse(this)">Remove Expance</button>
+            <button class="btn btn-danger mx-3" onclick="editExapnse(this)">Edit Expance</button>
+             </li>`
+             parentList.appendChild(newLi)
+    }
+    function removeExpanse(currElement){
+        currElement.parentElement.remove()
+        let parentList= document.getElementById("parentList")
+        if(parentList.children.length<=0){
+            let newEmptyMsg=document.createElement('h3')
+            newEmptyMsg.classList.add("emptyMsg")
+            newEmptyMsg.textContent=="Empty"
+            parentList.appendChild(newEmptyMsg)
+        }
+    }
+    function editExapnse(currElement){
+        if (currElement.textContent=="Done"){
+            currElement.textContent='Edit'
+            let currentExpanseName= currElement.previousElementSibling.value
+            let currHeading=document.createElement('h3')
+            currHeading.className="flex-grow-1"
+            currHeading.textContent= currentExpanseName
+            currElement.parentElement.replaceChild(currHeading,currElement.previousElementSibling)
+
+        }else{
+            currElement.textContent="Done"
+            let currentExpanseName= currElement.previousElementSibling.textContent
+            let currentInput= document.createElement("input")
+            currentInput.type="text"
+            currentInput.className="form-control"
+            currentInput.value= currentExpanseName
+            currElement.parentElement.replaceChild(currentInput,currElement.previousElementSibling)
+        }
+    }
+</script>
+</html>
